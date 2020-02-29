@@ -3,7 +3,7 @@ title: Python-Sprints
 email: pandanistas@numfocus.org
 description: > # this means to ignore newlines until "baseurl:"
   pandanistas is a community to promote diversity in pandas and open source contributors
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "/pandanistas_prg/" # the subpath of your site, e.g. /blog/
 url: "https://pandanistas.org/pandanistas_org" # the base hostname & protocol for your site
 twitter_username: pandanistas
 github_username:  pandanistas
