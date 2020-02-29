@@ -1,0 +1,211 @@
+---
+---
+<section id="home">
+    <div class="navigation__content container-fluid">
+        <picture>
+            <source srcset="static/images/title_photo/Python_Sprints_title_512x288px.jpg 512w,
+                            static/images/title_photo/Python_Sprints_title_1024x576px.jpg 1024w,
+                            static/images/title_photo/Python_Sprints_title_1334x750px.jpg 1334w,
+                            static/images/title_photo/Python_Sprints_title_1920x1080px.jpg 1920w,
+                            static/images/title_photo/Python_Sprints_title_2048x1152px.jpg 2048w"
+                    media="(orientation: landscape)"
+                    sizes="100vw">
+            <source srcset="static/images/title_photo/Python_Sprints_title_750x1334px.jpg 750w,
+                            static/images/title_photo/Python_Sprints_title_1080x1920px.jpg 1080w"
+                    media="(orientation: portrait)"
+                    sizes="100vw">
+            <img class="navigation__background-img"
+                 src="static/images/title_photo/Python_Sprints_title_1920x1080px.jpg"
+                 alt="Python Sprints Title Image">
+        </picture>
+
+        <div class="navigation__title-container row container-fluid">
+            <div class="col-md-12">
+                <img class="navigation__site-logo"
+                     srcset="static/images/site_logo/python_sprints_logo_triangles_light_text_480x245px.png 480w,
+                            static/images/site_logo/python_sprints_logo_triangles_light_text_960x489px.png 960w,
+                            static/images/site_logo/python_sprints_logo_triangles_light_text_1920x978px.png 1920w,
+                            "
+                     sizes="100vw"
+                     src="static/images/site_logo/python_sprints_logo_triangles_light_text_960x489px.png"
+                     alt="Python Sprints Logo">
+                <h2 class="navigation__subtitle">Contributing together</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="upcoming-chapters-container container-fluid">
+    <div class="row">
+        {% include events_array_generator.html future_events=true %}
+        {% if posts.size > 0 %}
+            {% assign upcoming_event = true %}
+            {% assign chapters_col = "col-lg-6" %}
+            {% assign posts = posts | reverse %}
+        {% else %}
+            {% assign chapters_col = "col-12" %}
+        {% endif %}
+        <div class="col-lg-1 no-padding-x">
+        </div>
+        <div class="col-lg-6 no-padding-x">
+            <section id="events">
+                <h2>Upcoming events</h2>
+                {% if upcoming_event == true %}
+                    {% assign current_date = "" %}
+                    {% for post in posts %}
+                        {% include event_layout.html event=post %}
+                    {% endfor %}
+                {% else %}
+                    <p>No upcoming events at the moment</p>
+                {% endif %}
+            </section>
+        </div>
+
+        <div class="col-lg-4 no-padding-x">
+            <section id="chapters" class="infobox">
+                <h2>User groups</h2>
+                <div id="chapters__map"></div>
+                {% include locations_variable_generator.html locations_array=site.chapters %}
+                <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0NCzoIqGkYFdpRl-LmgWTKpxPBkqxxO0&callback=initMap">
+                </script>
+                {% for chapter in site.chapters %}
+                    <h3><a href="{{ chapter.url }}">{{ chapter.title }}</a></h3>
+                    <p>
+                        <span class="chapters__flag flag-icon flag-icon-{{ chapter.country_code }}"></span>
+                        {{ chapter.address }}
+                    </p>
+                    {% unless forloop.last %}<hr/>{% endunless %}
+                {% endfor %}
+            </section>
+        </div>
+    </div>
+</div>
+
+{% comment %}
+<!--Events in the past section-->
+{% include recent_events_section.html %}
+{% endcomment %}
+
+<section id="about">
+    <h2>About us</h2>
+
+    <div class="row">
+        <div class="second-on-mobile no-gutters__col col-md-6">
+            <img class="services__img img-fluid rounded"
+                 src="static/images/sprints/lagos.jpg"
+                 alt="">
+        </div>
+        <div class="first-on-mobile no-gutters__col col-md-6">
+            <h3 class="text-right">What is a Python sprint?</h3>
+            <hr class="about__divider-right"/>
+            <p class="about__paragraph-right">
+                Open source software, including Python and most Python projects
+                is developed as a joint effort of thousands of programmers.
+                Programmers like each of us, that spend some time contributing
+                bug fixes, new features, documentation, tests...
+            </p>
+            <p class="about__paragraph-right">
+                A sprint is an event where open source programmers meet, and
+                work together. Traditionally, sprints mainly happened at the
+                end of conferences, that core developers attended. But our
+                approach is to have them often, and open to all levels.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="no-gutters__col col-md-6">
+            <h3 class="text-left">Are sprints for me?</h3>
+            <hr class="about__divider-left"/>
+            <p class="about__paragraph-left">
+                Short answer: Yes. Sprints are for eveyone. Programmers new
+                to open source are more than welcome. One of our main goals
+                is to help people get started. In most events, we have an
+                introduction on how to contribute to open source.
+            </p>
+            <p class="about__paragraph-left">
+                Core developers and experienced contributors are also very
+                welcome. Not only to contribute during the sprints, but also
+                to mentor other people, and to help planning the sprints.
+            </p>
+        </div>
+        <div class="no-gutters__col col-md-6">
+            <img class="services__img img-fluid rounded"
+                 src="static/images/sprints/paris.jpg"
+                 alt="">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="second-on-mobile no-gutters__col col-md-6">
+            <img class="services__img img-fluid rounded"
+                 src="static/images/sprints/delhi.jpg"
+                 alt="">
+        </div>
+        <div class="first-on-mobile no-gutters__col col-md-6">
+            <h3 class="text-right">Diversity and inclusion</h3>
+            <hr class="about__divider-right"/>
+            <p class="about__paragraph-right">
+                We are commited to a friendly and inclusive environment for
+                everyone. Regardless of gender, sexual orientation, disability,
+                physical appearance, body size, race, or religion.
+                We do not tolerate any of harassment in our events.
+            </p>
+            <p class="about__paragraph-right">
+                We practice inclusion policies, with the goal of creating a
+                diverse and welcoming environment for everybody. We give
+                priority to people from underrepresented groups for events
+                with a waiting list. We also organize events focused to
+                specific groups.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="no-gutters__col col-md-6">
+            <h3 class="mt-3 text-left">Contact us</h3>
+            <hr class="about__divider-left"/>
+            <form class="container" method="POST" action="//formspree.io/pandanistas@numfocus.org" role="form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="contact__form-name">Name</label>
+                            <input id="contact__form-name" type="text" name="name" class="form-control" placeholder="Your name, so we know who is contacting" required="required" data-error="Full name is required.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="contact__form-email">Email</label>
+                            <input id="contact__form-email" type="email" name="email" class="form-control" placeholder="Your email, so we can reply" required="required" data-error="Valid email is required.">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="contact__form-message">Message</label>
+                            <textarea id="contact__form-message" name="message" class="form-control" placeholder="Tell us what we can do for you" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <input type="text" name="_gotcha" style="display: none">
+                        <input type="hidden" name="_subject" value="Message from Python Sprints">
+                        <button type="submit" class="btn btn-success btn-send btn-lg">Send <span class="contact__icon"><i class="fas fa-envelope"></i></span></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="no-gutters__col col-md-6">
+            <img class="services__img img-fluid rounded"
+                 src="static/images/sprints/chicago.jpg"
+                 alt="">
+        </div>
+    </div>
+
+</section>
+

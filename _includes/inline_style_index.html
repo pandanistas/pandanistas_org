@@ -1,0 +1,13 @@
+{% include events_array_generator.html future_events = true %}
+{% if posts.size > 0 %}
+    {% assign upcoming_event = true %}
+    {% assign post = posts | last %}
+
+    {% if post.image %}
+        {% assign image = post.image %}
+    {% else %}
+        {% assign image = "static/images/events/default_image_800x800px.jpeg" %}
+    {% endif %}
+{% endif %}
+
+
