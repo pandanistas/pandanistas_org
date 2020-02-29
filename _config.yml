@@ -1,12 +1,12 @@
 # Site settings
 title: Python-Sprints
-email: py.sprints@gmail.com
+email: pandanistas@numfocus.org
 description: > # this means to ignore newlines until "baseurl:"
-  Python Sprints is a website to promote sprints in the Python community
+  pandanistas is a community to promote diversity in pandas and open source contributors
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://python-sprints.github.io/" # the base hostname & protocol for your site
-twitter_username: py_sprints
-github_username:  python-sprints
+url: "https://pandanistas.org/pandanistas_org" # the base hostname & protocol for your site
+twitter_username: pandanistas
+github_username:  pandanistas
 
 # Build settings
 include: ['_pages']
